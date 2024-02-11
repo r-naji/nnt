@@ -5,3 +5,10 @@
     min-width: 300px;
   }
 }
+
+@media (max-width: 500px)  {
+  .verb-search-container {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}

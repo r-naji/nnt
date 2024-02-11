@@ -8,3 +8,13 @@ p-breadcrumb {
   display: block;
   margin-bottom: 2rem;
 }
+
+@media (max-width: 500px)  {
+  main {
+    margin-left: 0;
+  }
+
+  .layout-sidebar {
+    display: none;
+  }
+}
