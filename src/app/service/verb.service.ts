@@ -45,8 +45,8 @@ export class VerbServiceMockUp {
   private filterByNameAndLang(verb: Verb, input: string, filters: Filters): boolean {
     return !input
       || filters.english
-          ? verb.definition.includes(input)
-          : (verb.name_kana.includes(input) || verb.name_eng.includes(input));
+          ? verb.definition.toUpperCase().includes(input.toUpperCase())
+          : (verb.name_kana.toUpperCase().includes(input.toUpperCase()) || verb.name_eng.toUpperCase().includes(input.toUpperCase()));
   }
 
   private filterByLevel(verb: Verb, filters: Filters) {

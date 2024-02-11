@@ -43,8 +43,8 @@ export class AdjectiveServiceMockUp {
   private filterByName(adjective: Adjective, input: string, filters: Filters): boolean {
     return !input
       && filters.english
-          ? adjective.definition.includes(input)
-          : (adjective.name_kana.includes(input) || adjective.name_eng.includes(input));
+          ? adjective.definition.toUpperCase().includes(input.toUpperCase())
+          : (adjective.name_kana.toUpperCase().includes(input.toUpperCase()) || adjective.name_eng.toUpperCase().includes(input.toUpperCase()));
   }
 
   private filterByLevel(adjective: Adjective, filters: Filters) {
