@@ -28,8 +28,9 @@ export const routes: Routes = [
     title: 'Unauthorized Access',
   },
   {
-    path: '/',
-    redirectTo: 'jpn-grammar/verbs'
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/jpn-grammar/verbs'
   },
   {
     path: '**',
