@@ -11,7 +11,7 @@ import { TagModule } from 'primeng/tag';
 import { FilterAdjectiveGroup, FilterLevel, Filters } from '../../shared/interface/filters';
 
 @Component({
-  selector: 'nnt-adjective-dictionnary-component',
+  selector: 'nnt-adjective-dictionnary',
   standalone: true,
   imports: [
     CommonModule,
@@ -24,10 +24,10 @@ import { FilterAdjectiveGroup, FilterLevel, Filters } from '../../shared/interfa
     SelectButtonModule
   ],
   providers: [AdjectiveServiceMockUp],
-  templateUrl: './adjective-dictionnary-component.component.html',
-  styleUrl: './adjective-dictionnary-component.component.scss'
+  templateUrl: './adjective-dictionnary.component.html',
+  styleUrl: './adjective-dictionnary.component.scss'
 })
-export class AdjectiveDictionnaryComponentComponent {
+export class AdjectiveDictionnaryComponent {
 
   public userInput = '';
   public adjectives: Array<Adjective> = this.adjectiveServiceMockUp.getAll();

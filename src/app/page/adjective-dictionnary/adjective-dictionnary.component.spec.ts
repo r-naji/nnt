@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdjectiveDictionnaryComponentComponent } from './adjective-dictionnary-component.component';
+import { AdjectiveDictionnaryComponentComponent } from './adjective-dictionnary.component';
 
 describe('AdjectiveDictionnaryComponentComponent', () => {
   let component: AdjectiveDictionnaryComponentComponent;
@@ -11,7 +11,7 @@ describe('AdjectiveDictionnaryComponentComponent', () => {
       imports: [AdjectiveDictionnaryComponentComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(AdjectiveDictionnaryComponentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
