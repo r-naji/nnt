@@ -28,6 +28,10 @@ export const routes: Routes = [
     title: 'Unauthorized Access',
   },
   {
+    path: '/',
+    redirectTo: 'jpn-grammar/verbs'
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
     title: 'Page Not Found',
