@@ -1,5 +1,24 @@
+.layout-topbar {
+  position: relative;
+}
+
+.toggle {
+  display: none;
+}
+
 @media (max-width: 500px)  {
   .layout-topbar {
     justify-content: center;
+  }
+
+  .toggle {
+    position: absolute;
+    height: 5rem;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
   }
 }

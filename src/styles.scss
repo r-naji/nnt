@@ -5,7 +5,9 @@
 @import "primeicons/primeicons.css";
 
 @import "assets/styles/global.css";
-$secondary4: #FFD940;
+
+$secondary1: #FFD940;
+
 .matchedText {
-	background-color: lighten($secondary4, 20%);
+	background-color: lighten($secondary1, 20%);
 }

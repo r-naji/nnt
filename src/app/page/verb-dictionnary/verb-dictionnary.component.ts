@@ -9,9 +9,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TagModule } from 'primeng/tag';
 import { FilterLevel, FilterVerbGroup, Filters } from '../../shared/interface/filters';
-import { Subject, debounceTime, delay, switchMap, takeUntil, tap } from 'rxjs';
+import { Observable, Subject, debounceTime, delay, switchMap, takeUntil, tap } from 'rxjs';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { HighlightPipe } from '../../shared/pipe/highlight.pipe';
+import { LayoutService } from '../../shared/service/layout.service';
 
 @Component({
   selector: 'nnt-verb-dictionnary',
@@ -42,10 +43,18 @@ export class VerbDictionnaryComponent implements OnDestroy {
   public jlptLevels: Array<FilterLevel> = ['ALL', 'N5', 'N4', 'N3', 'N2', 'N1'];
   public level: FilterLevel = 'ALL';
   public loading = false;
+  public showMobileFilter = false;
+  public mobileView$: Observable<boolean> | null = null;
   private userInputSub: Subject<string> = new Subject();
 	private unsubscribe: Subject<void> = new Subject();
 
-  constructor(private verbServiceMockUp: VerbServiceMockUp) {
+
+  constructor(
+    private verbServiceMockUp: VerbServiceMockUp,
+    private layoutService: LayoutService)
+  {
+    this.mobileView$ = this.layoutService.isMobileView();
+
     this.userInputSub
       .pipe(takeUntil(this.unsubscribe))
       .pipe(debounceTime(300))

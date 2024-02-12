@@ -1,8 +1,6 @@
 <nnt-nav-bar></nnt-nav-bar>
-<div class="layout-sidebar">
-  <nnt-side-menu></nnt-side-menu>
-</div>
-<main>
+<nnt-side-menu></nnt-side-menu>
+<main [class.disable-interaction]="menuState$ | async">
   <p-breadcrumb
     class="max-w-full"
     [model]="breadcrumbItems"
@@ -10,3 +8,4 @@
   </p-breadcrumb>
   <router-outlet />
 </main>
+<div [class.backdrop]="menuState$ | async"></div>

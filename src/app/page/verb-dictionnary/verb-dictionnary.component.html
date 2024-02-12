@@ -1,21 +1,40 @@
 <div class="verb-container">
-  <div class="flex flex-row gap-4 verb-search-container">
+  <div class="flex flex-row gap-4 verb-input-search-container">
     <span class="p-float-label">
       <input pInputText id="verb" [(ngModel)]="userInput" (ngModelChange)="lookupVerb()"/>
       <label for="verb">Find a Japanese Verb</label>
     </span>
-    <div class="flex flex-row align-items-center gap-2">
+    <div class="lang-filter flex-row align-items-center gap-2">
       <label for="searchLanguage">Search in english</label>
       <p-inputSwitch inputId="searchLanguage" [(ngModel)]="english" (ngModelChange)="lookupVerb()"></p-inputSwitch>
     </div>
+
+    <span (click)="showMobileFilter = !showMobileFilter" class="mobile-filter pi pi-filter"></span>
+
   </div>
 
-  <div class="flex flex-row align-items-center gap-4 verb-search-container">
-    <label for="verbGroup">Verb Group</label>
-    <p-selectButton [options]="groups" [(ngModel)]="group" (ngModelChange)="lookupVerb()"></p-selectButton>
-    <label for="jlptLevel">JLPT Level</label>
-    <p-selectButton [options]="jlptLevels" [(ngModel)]="level" (ngModelChange)="lookupVerb()"></p-selectButton>
+  <ng-container *ngIf="!(mobileView$ | async)">
+    <ng-container *ngTemplateOutlet="inlineFilters"></ng-container>
+  </ng-container>
+
+  <div
+    class="mobile-inline-filter"
+    [class.show]="(mobileView$ | async) && showMobileFilter">
+    <ng-container *ngTemplateOutlet="inlineFilters"></ng-container>
   </div>
+
+  <ng-template #inlineFilters>
+    <div class="flex flex-row align-items-center gap-4 verb-search-container">
+      <div class="mobile-filter flex flex-row align-items-center gap-2">
+        <label for="searchLanguage">Search in english</label>
+        <p-inputSwitch inputId="searchLanguage" [(ngModel)]="english" (ngModelChange)="lookupVerb()"></p-inputSwitch>
+      </div>
+      <label for="verbGroup">Verb Group</label>
+      <p-selectButton [options]="groups" [(ngModel)]="group" (ngModelChange)="lookupVerb()"></p-selectButton>
+      <label for="jlptLevel">JLPT Level</label>
+      <p-selectButton [options]="jlptLevels" [(ngModel)]="level" (ngModelChange)="lookupVerb()"></p-selectButton>
+    </div>
+  </ng-template>
 
   <div class="card">
     <p-progressSpinner *ngIf="loading"

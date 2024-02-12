@@ -4,11 +4,15 @@ import { NavBarComponent } from './component/nav-bar/nav-bar.component';
 import { SideMenuComponent } from './component/side-menu/side-menu.component';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { MenuItem } from 'primeng/api/menuitem';
+import { Observable } from 'rxjs';
+import { MenuService } from './shared/service/menu.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    CommonModule,
     RouterOutlet,
     NavBarComponent,
     SideMenuComponent,
@@ -21,6 +25,7 @@ export class AppComponent implements OnInit {
 
   public greeting = '';
   public breadcrumbHome: MenuItem = { icon: 'pi pi-home', routerLink: '/' };
+  public menuState$: Observable<boolean> | null = null;
 
   public breadcrumbItems: MenuItem[] = [
       {
@@ -32,9 +37,10 @@ export class AppComponent implements OnInit {
       }
   ];
 
-  constructor() {}
+  constructor(private menuService: MenuService) {}
 
   public ngOnInit(): void {
+    this.menuState$ = this.menuService.getToggle();
     this.setGreeting();
   }
 

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AppMenuitemComponent } from './side-menu-item.component';
 import { CommonModule } from '@angular/common';
+import { MenuService } from '../../shared/service/menu.service';
+import { MenuItem } from 'primeng/api';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'nnt-side-menu',
@@ -11,9 +14,13 @@ import { CommonModule } from '@angular/common';
 })
 export class SideMenuComponent implements OnInit {
 
-  model: any[] = [];
+  public model: MenuItem[] = [];
+  public menuState$: Observable<boolean> | null = null;
+
+  constructor(private menuService: MenuService) {}
 
   public ngOnInit(): void {
+    this.menuState$ = this.menuService.getToggle();
     this.model = [
       {
         label: 'Japanese Grammar',

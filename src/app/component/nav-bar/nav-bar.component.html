@@ -1,5 +1,17 @@
 <div class="layout-topbar">
-  <a class="layout-topbar-logo">
+  <div class="toggle">
+    <span
+      class="pi"
+      [ngClass]="{
+        'pi-angle-double-right': !menuOpen,
+        'pi-angle-double-left': menuOpen
+      }"
+      (click)="toggleMenu()">
+    </span>
+  </div>
+  <a
+    class="layout-topbar-logo"
+    (click)="goToHome()">
       <img src="assets/images/nihon.png" alt="logo">
       <span>Nihongo No Tatsujin</span>
   </a>

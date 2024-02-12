@@ -1,0 +1,12 @@
+@media (max-width: 500px)  {
+  .layout-sidebar {
+    left: -300px;
+    transition: left 0.25s;
+
+    &.is-visible {
+      left: 2rem;
+    }
+  }
+}
+
+

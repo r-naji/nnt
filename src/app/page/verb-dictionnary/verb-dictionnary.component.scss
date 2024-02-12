@@ -1,4 +1,4 @@
-.verb-search-container {
+.verb-search-container, .verb-input-search-container {
   margin-bottom: 2rem;
 
   input {
@@ -6,9 +6,40 @@
   }
 }
 
+.mobile-filter {
+  display: none;
+}
+
+.lang-filter {
+  display: flex;
+}
+
 @media (max-width: 500px)  {
   .verb-search-container {
     flex-direction: column !important;
     align-items: flex-start !important;
+  }
+
+  .mobile-filter {
+    display: block;
+  }
+
+  .lang-filter {
+    display: none;
+  }
+
+  .pi-filter {
+    align-self: center;
+  }
+
+  .mobile-inline-filter {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.15s ease-out;
+
+    &.show {
+      max-height: 600px;
+      transition: max-height 0.25s ease-in;
+    }
   }
 }
