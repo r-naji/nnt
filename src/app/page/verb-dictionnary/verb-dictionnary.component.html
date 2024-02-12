@@ -17,9 +17,9 @@
     <ng-container *ngTemplateOutlet="inlineFilters"></ng-container>
   </ng-container>
 
-  <div
+  <div *ngIf="mobileView$ | async"
     class="mobile-inline-filter"
-    [class.show]="(mobileView$ | async) && showMobileFilter">
+    [class.show]="showMobileFilter">
     <ng-container *ngTemplateOutlet="inlineFilters"></ng-container>
   </div>
 
