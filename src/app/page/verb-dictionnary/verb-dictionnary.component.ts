@@ -47,7 +47,7 @@ export class VerbDictionnaryComponent implements OnDestroy {
   public mobileView$: Observable<boolean> | null = null;
   private userInputSub: Subject<string> = new Subject();
 	private unsubscribe: Subject<void> = new Subject();
-
+  public gridMode: 'list'|'grid' = 'list';
 
   constructor(
     private verbServiceMockUp: VerbServiceMockUp,
@@ -58,23 +58,34 @@ export class VerbDictionnaryComponent implements OnDestroy {
     this.userInputSub
       .pipe(takeUntil(this.unsubscribe))
       .pipe(debounceTime(300))
-      .pipe(tap((input) => {
+      .pipe(tap(() => {
         this.loading = true;
       }))
-      .pipe(switchMap((input) => this.verbServiceMockUp.lookup(input, this.getFilters()).pipe(delay(2000))))
+      .pipe(switchMap((input) => this.verbServiceMockUp.lookup(input, this.getFilters()).pipe(delay(300))))
       .subscribe(verbs => {
         this.verbs = verbs;
         this.loading = false;
       });
   }
 
-  public lookupVerb(): void {
-    this.userInputSub.next(this.userInput);
-  }
-
   public ngOnDestroy(): void {
     this.unsubscribe.next();
     this.unsubscribe.unsubscribe();
+  }
+
+  public lookupVerb(): void {
+    this.userInputSub.next(this.userInput.trim());
+  }
+
+  public switchLang(): void {
+    if (this.userInput.trim()) {
+      this.lookupVerb();
+    }
+  }
+
+  public clear(): void {
+    this.userInput = '';
+    this.verbs = [];
   }
 
   private getFilters(): Filters {

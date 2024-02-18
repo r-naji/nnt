@@ -6,7 +6,7 @@
     </span>
     <div class="lang-filter flex-row align-items-center gap-2">
       <label for="searchLanguage">Search in english</label>
-      <p-inputSwitch inputId="searchLanguage" [(ngModel)]="english" (ngModelChange)="lookupVerb()"></p-inputSwitch>
+      <p-inputSwitch inputId="searchLanguage" [(ngModel)]="english" (ngModelChange)="switchLang()"></p-inputSwitch>
     </div>
 
     <span (click)="showMobileFilter = !showMobileFilter" class="mobile-filter pi pi-filter"></span>
@@ -27,7 +27,7 @@
     <div class="flex flex-row align-items-center gap-4 verb-search-container">
       <div class="mobile-filter flex-row align-items-center gap-2">
         <label for="searchLanguage">Search in english</label>
-        <p-inputSwitch inputId="searchLanguage" [(ngModel)]="english" (ngModelChange)="lookupVerb()"></p-inputSwitch>
+        <p-inputSwitch inputId="searchLanguage" [(ngModel)]="english" (ngModelChange)="switchLang()"></p-inputSwitch>
       </div>
       <label for="verbGroup">Verb Group</label>
       <p-selectButton [options]="groups" [(ngModel)]="group" (ngModelChange)="lookupVerb()"></p-selectButton>
@@ -40,7 +40,12 @@
     <p-progressSpinner *ngIf="loading"
       class="flex flex-row align-items-center">
     </p-progressSpinner>
-    <p-dataView #dv *ngIf="!loading" [value]="verbs">
+    <p-dataView #dv *ngIf="!loading" [value]="verbs" [layout]="gridMode" (onChangeLayout)="gridMode = $event.layout">
+      <ng-template pTemplate="header">
+        <div class="flex justify-content-start">
+            <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+        </div>
+      </ng-template>
       <ng-template pTemplate="list" let-verbs>
         <div class="grid grid-nogutter">
             <div class="col-12" *ngFor="let verb of verbs; let first = first">
@@ -69,6 +74,37 @@
           </div>
         </div>
       </ng-template>
+
+      <ng-template let-product pTemplate="grid" let-verbs>
+        <div class="grid grid-nogutter">
+            <div class="col-12 sm:col-6 lg:col-12 xl:col-2 p-2" *ngFor="let verb of verbs">
+                <div class="p-4 border-1 surface-border surface-card border-round">
+                    <div class="flex flex-wrap align-items-center justify-content-between gap-2">
+                        <span class="flex align-items-center gap-2">
+                          <p-tag [value]="verb.group" [severity]="'primary'"></p-tag>
+                        </span>
+                        <p-tag [value]="verb.jlpt" [severity]="'success'"></p-tag>
+                    </div>
+                    <div class="flex flex-column align-items-center gap-3 py-5">
+                      <div class="text-2xl font-bold text-900">
+                        <span [innerHtml]="english ? verb.name_kana : (verb.name_kana | highlight: userInput)"></span>
+                        <span> - </span>
+                        <span [innerHtml]="'[' + (english ? verb.name_eng : (verb.name_eng | highlight: userInput)) + ']'"></span>
+                      </div>
+                      <span class="flex align-items-center gap-2">
+                        <span class="font-semibold"
+                          [innerHtml]="english ? (verb.definition | highlight: userInput) : verb.definition">
+                        </span>
+                      </span>
+                    </div>
+                    <!-- <div class="flex align-items-center justify-content-between">
+                        <span class="text-2xl font-semibold">{{ '$' + product.price }}</span>
+                        <button pButton icon="pi pi-shopping-cart" class="p-button-rounded" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </ng-template>
     </p-dataView>
   </div>
 </div>
