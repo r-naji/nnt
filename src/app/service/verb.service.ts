@@ -24,6 +24,25 @@ export class VerbServiceMockUp {
     { name_kana: 'のむ', name_eng: 'nomu', definition: 'to drink', group: 'U', jlpt: 'N5' },
     { name_kana: 'ねむ', name_eng: 'nemu', definition: 'to sleep', group: 'U', jlpt: 'N5' },
     { name_kana: 'する', name_eng: 'suru', definition: 'to do', group: 'IRR', jlpt: 'N4' },
+    // --
+    { name_kana: 'あびる', name_eng: 'abiru', definition: 'to bathe, to shower', group: 'RU', jlpt: 'N5' },
+    { name_kana: 'あげる', name_eng: 'ageru', definition: 'to raise', group: 'RU', jlpt: 'N5' },
+    { name_kana: 'たべる', name_eng: 'taberu', definition: 'to eat', group: 'RU', jlpt: 'N5' },
+    { name_kana: 'のむ', name_eng: 'nomu', definition: 'to drink', group: 'U', jlpt: 'N5' },
+    { name_kana: 'ねむ', name_eng: 'nemu', definition: 'to sleep', group: 'U', jlpt: 'N5' },
+    { name_kana: 'する', name_eng: 'suru', definition: 'to do', group: 'IRR', jlpt: 'N4' },
+    { name_kana: 'あびる', name_eng: 'abiru', definition: 'to bathe, to shower', group: 'RU', jlpt: 'N5' },
+    { name_kana: 'あげる', name_eng: 'ageru', definition: 'to raise', group: 'RU', jlpt: 'N5' },
+    { name_kana: 'たべる', name_eng: 'taberu', definition: 'to eat', group: 'RU', jlpt: 'N5' },
+    { name_kana: 'のむ', name_eng: 'nomu', definition: 'to drink', group: 'U', jlpt: 'N5' },
+    { name_kana: 'ねむ', name_eng: 'nemu', definition: 'to sleep', group: 'U', jlpt: 'N5' },
+    { name_kana: 'する', name_eng: 'suru', definition: 'to do', group: 'IRR', jlpt: 'N4' },
+    { name_kana: 'あびる', name_eng: 'abiru', definition: 'to bathe, to shower', group: 'RU', jlpt: 'N5' },
+    { name_kana: 'あげる', name_eng: 'ageru', definition: 'to raise', group: 'RU', jlpt: 'N5' },
+    { name_kana: 'たべる', name_eng: 'taberu', definition: 'to eat', group: 'RU', jlpt: 'N5' },
+    { name_kana: 'のむ', name_eng: 'nomu', definition: 'to drink', group: 'U', jlpt: 'N5' },
+    { name_kana: 'ねむ', name_eng: 'nemu', definition: 'to sleep', group: 'U', jlpt: 'N5' },
+    { name_kana: 'する', name_eng: 'suru', definition: 'to do', group: 'IRR', jlpt: 'N4' },
   ];
 
   constructor() {}
