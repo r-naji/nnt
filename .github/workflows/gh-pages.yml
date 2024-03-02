@@ -35,4 +35,4 @@ jobs:
 
     - name: Deploy
       if: success()
-      run: aws s3 sync ./dist/nihongo-no-tatsujin/browser s3://nihongo-no-tatsujin-github
+      run: aws s3 sync ./frontend/dist/nihongo-no-tatsujin/browser s3://nihongo-no-tatsujin-github
